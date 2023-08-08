@@ -26,6 +26,7 @@ cat queries-datafusion.sql | while read query; do
     echo -n "["
 
     for c in 1 2 4 8; do
+        echo "parallelism: $c"
         export DATAFUSION_EXECUTION_TARGET_PATITIONS=$c
         for i in $(seq 1 $TRIES); do
             # 1. there will be two query result, one for creating table another for executing the select statement
