@@ -23,10 +23,9 @@ cat queries-datafusion.sql | while read query; do
     echo "qnum: $QUERY_NUM"
     echo "$query"
 
-    echo -n "["
-
     for c in 1 2 4 8; do
         export DATAFUSION_EXECUTION_TARGET_PATITIONS=$c
+        echo -n "["
         for i in $(seq 1 $TRIES); do
             # 1. there will be two query result, one for creating table another for executing the select statement
             # 2. each query contains a "Query took xxx seconds", we just grep these 2 lines
@@ -40,9 +39,8 @@ cat queries-datafusion.sql | while read query; do
 
         echo "${QUERY_NUM},${c},${i},${RES}" >> result.csv
         done
+        echo "],"
     done
-
-    echo "],"
 
     QUERY_NUM=$((QUERY_NUM + 1))
 done
