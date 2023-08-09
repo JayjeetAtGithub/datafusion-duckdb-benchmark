@@ -25,6 +25,7 @@ for c in cores:
         results = con.execute(query).fetchall()
         end = timeit.default_timer()
 
+        # omit the first 2 cold starts
         if try_num > 2:
             print(end-start)
             # Append (query,iteration,time)

@@ -36,6 +36,8 @@ cat queries-datafusion.sql | while read query; do
                 echo -n "$RES" || \
                 echo -n "null"
             [[ "$i" != $TRIES ]] && echo -n ", "
+            
+            # omit the first 2 cold starts
             if [[ $i -gt 2 ]]; then
                 echo "${QUERY_NUM},${c},${i},${RES}" >> result.csv
             fi
