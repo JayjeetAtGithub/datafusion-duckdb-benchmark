@@ -18,7 +18,7 @@ query_num = sys.argv[1]
 cores = [1, 2, 4, 8]
 
 for c in cores:
-    for try_num in range(3):
+    for try_num in range(1, 6):
         # set number of cores
         con.execute("PRAGMA threads={}".format(c))
         start = timeit.default_timer()
@@ -26,7 +26,8 @@ for c in cores:
         end = timeit.default_timer()
         print(end - start)
 
-        # Append (query,iteration,time)
-        with open("result.csv", "a") as myfile:
-            time = (end - start)
-            myfile.write("{},{},{},{}\n".format(query_num, c, try_num, time))
+        if try_num > 2:
+            # Append (query,iteration,time)
+            with open("result.csv", "a") as myfile:
+                time = (end - start)
+                myfile.write("{},{},{},{}\n".format(query_num, c, try_num, time))

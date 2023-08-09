@@ -2,7 +2,7 @@
 
 # create file
 CREATE=${CREATE:-create-single-duckdb.sql}
-TRIES=3
+TRIES=5
 QUERY_NUM=1
 echo "Using $CREATE, appending results to result.csv"
 

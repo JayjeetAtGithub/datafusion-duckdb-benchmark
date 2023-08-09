@@ -4,7 +4,7 @@
 # create file
 CREATE=${CREATE:-create-single-datafusion.sql}
 DATAFUSION_CLI=${DATAFUSION_CLI:-datafusion-cli}
-TRIES=3
+TRIES=5
 QUERY_NUM=1
 echo "Using ${DATAFUSION_CLI} $CREATE, appending results to result.csv"
 
@@ -36,8 +36,9 @@ cat queries-datafusion.sql | while read query; do
                 echo -n "$RES" || \
                 echo -n "null"
             [[ "$i" != $TRIES ]] && echo -n ", "
-
-        echo "${QUERY_NUM},${c},${i},${RES}" >> result.csv
+            if [[ $i -gt 2 ]]; then
+                echo "${QUERY_NUM},${c},${i},${RES}" >> result.csv
+            fi
         done
         echo "],"
     done
