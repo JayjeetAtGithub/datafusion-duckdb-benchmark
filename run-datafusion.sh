@@ -32,13 +32,14 @@ cat queries-datafusion.sql | while read query; do
             # 3. use sed to take the second line
             # 4. use awk to take the number we want
             RES=`DATAFUSION_EXECUTION_TARGET_PARTITIONS=${c} ${DATAFUSION_CLI} -f ${CREATE} /tmp/query.sql 2>&1 | grep "Query took" | sed -n 2p | awk '{print $7}'`
-            [[ $RES != "" ]] && \
-                echo -n "$RES" || \
-                echo -n "null"
-            [[ "$i" != $TRIES ]] && echo -n ", "
             
             # omit the first 2 cold starts
             if [[ $i -gt 2 ]]; then
+                [[ $RES != "" ]] && \
+                    echo -n "$RES" || \
+                    echo -n "null"
+                [[ "$i" != $TRIES ]] && echo -n ", "
+
                 echo "${QUERY_NUM},${c},${i},${RES}" >> result.csv
             fi
         done
