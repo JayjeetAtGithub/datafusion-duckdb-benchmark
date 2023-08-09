@@ -14,7 +14,7 @@ echo "$CREATE" >> result.csv
 python -c 'import duckdb; print("duckdb {}".format(duckdb.__version__))' >> result.csv
 echo `date` >> result.csv
 echo "**********" >> result.csv
-echo "Query,iteration,time" >> result.csv
+echo "Query,parallelism,iteration,time" >> result.csv
 
 # clean out old database
 rm -f my-db.duckdb*
