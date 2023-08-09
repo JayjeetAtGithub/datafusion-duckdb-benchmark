@@ -3,14 +3,15 @@ import pandas as pd
 import seaborn as sns
 
 if __name__ == "__main__":
-
+    db = str(sys.argv[1])
+    sns.set_theme(style="whitegrid")
     data = {
         "query_no": list(),
         "cores": list(),
         "duration": list()   
     }
 
-    with open('result.csv') as f:
+    with open(f'{db}.csv') as f:
         lines = f.readlines()
 
     for line in lines:
@@ -26,5 +27,8 @@ if __name__ == "__main__":
         data["duration"].append(duration)
 
     df = pd.DataFrame(data)
-    sns.barplot(x="query_no", y="duration", hue="cores", data=df)
+    sns.barplot(x="query_no", errwidth=1, capsize=0.1, errorbar="sd", y="duration", hue="cores", data=df)
+    plt.xlabel("Query No.")
+    plt.ylabel("Duration (s)")
+    plt.title(f"{db} query scaling")
     plt.show()

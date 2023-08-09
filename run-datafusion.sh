@@ -6,14 +6,14 @@ CREATE=${CREATE:-create-single-datafusion.sql}
 DATAFUSION_CLI=${DATAFUSION_CLI:-datafusion-cli}
 TRIES=5
 QUERY_NUM=1
-echo "Using ${DATAFUSION_CLI} $CREATE, appending results to result.csv"
+echo "Using ${DATAFUSION_CLI} $CREATE, appending results to datafusion.csv"
 
-echo "**********" >> result.csv
-echo "$DATAFUSION_CLI" >> result.csv
-echo "$CREATE" >> result.csv
-echo `date` >> result.csv
-echo "**********" >> result.csv
-echo "Query,parallelism,iteration,time" >> result.csv
+echo "**********" >> datafusion.csv
+echo "$DATAFUSION_CLI" >> datafusion.csv
+echo "$CREATE" >> datafusion.csv
+echo `date` >> datafusion.csv
+echo "**********" >> datafusion.csv
+echo "Query,parallelism,iteration,time" >> datafusion.csv
 
 cat queries-datafusion.sql | while read query; do
     sync
@@ -40,7 +40,7 @@ cat queries-datafusion.sql | while read query; do
                     echo -n "null"
                 [[ "$i" != $TRIES ]] && echo -n ", "
 
-                echo "${QUERY_NUM},${c},${i},${RES}" >> result.csv
+                echo "${QUERY_NUM},${c},${i},${RES}" >> datafusion.csv
             fi
         done
         echo "],"

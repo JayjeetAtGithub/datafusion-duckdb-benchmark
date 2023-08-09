@@ -29,6 +29,6 @@ for c in cores:
         if try_num > 2:
             print(end-start)
             # Append (query,iteration,time)
-            with open("result.csv", "a") as myfile:
+            with open("duckdb.csv", "a") as myfile:
                 time = (end - start)
                 myfile.write("{},{},{},{}\n".format(query_num, c, try_num, time))

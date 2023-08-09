@@ -4,17 +4,17 @@
 CREATE=${CREATE:-create-single-duckdb.sql}
 TRIES=5
 QUERY_NUM=1
-echo "Using $CREATE, appending results to result.csv"
+echo "Using $CREATE, appending results to duckdb.csv"
 
 source venv/bin/activate
 
-echo "**********" >> result.csv
+echo "**********" >> duckdb.csv
 echo "duckdb"
-echo "$CREATE" >> result.csv
-python -c 'import duckdb; print("duckdb {}".format(duckdb.__version__))' >> result.csv
-echo `date` >> result.csv
-echo "**********" >> result.csv
-echo "Query,parallelism,iteration,time" >> result.csv
+echo "$CREATE" >> duckdb.csv
+python -c 'import duckdb; print("duckdb {}".format(duckdb.__version__))' >> duckdb.csv
+echo `date` >> duckdb.csv
+echo "**********" >> duckdb.csv
+echo "Query,parallelism,iteration,time" >> duckdb.csv
 
 # clean out old database
 rm -f my-db.duckdb*
