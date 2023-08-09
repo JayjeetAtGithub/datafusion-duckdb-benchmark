@@ -8,13 +8,6 @@ TRIES=5
 QUERY_NUM=1
 echo "Using ${DATAFUSION_CLI} $CREATE, appending results to datafusion.csv"
 
-echo "**********" >> datafusion.csv
-echo "$DATAFUSION_CLI" >> datafusion.csv
-echo "$CREATE" >> datafusion.csv
-echo `date` >> datafusion.csv
-echo "**********" >> datafusion.csv
-echo "Query,parallelism,iteration,time" >> datafusion.csv
-
 cat queries-datafusion.sql | while read query; do
     sync
     echo 3 | sudo tee /proc/sys/vm/drop_caches >/dev/null

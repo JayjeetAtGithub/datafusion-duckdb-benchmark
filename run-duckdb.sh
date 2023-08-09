@@ -8,14 +8,6 @@ echo "Using $CREATE, appending results to duckdb.csv"
 
 source venv/bin/activate
 
-echo "**********" >> duckdb.csv
-echo "duckdb"
-echo "$CREATE" >> duckdb.csv
-python -c 'import duckdb; print("duckdb {}".format(duckdb.__version__))' >> duckdb.csv
-echo `date` >> duckdb.csv
-echo "**********" >> duckdb.csv
-echo "Query,parallelism,iteration,time" >> duckdb.csv
-
 # clean out old database
 rm -f my-db.duckdb*
 
