@@ -31,7 +31,7 @@ cat queries-datafusion.sql | while read query; do
             # 2. each query contains a "Query took xxx seconds", we just grep these 2 lines
             # 3. use sed to take the second line
             # 4. use awk to take the number we want
-            RES=`DATAFUSION_EXECUTION_TARGET_PATITIONS=${c} ${DATAFUSION_CLI} -f ${CREATE} /tmp/query.sql 2>&1 | grep "Query took" | sed -n 2p | awk '{print $7}'`
+            RES=`DATAFUSION_EXECUTION_TARGET_PARTITIONS=${c} ${DATAFUSION_CLI} -f ${CREATE} /tmp/query.sql 2>&1 | grep "Query took" | sed -n 2p | awk '{print $7}'`
             [[ $RES != "" ]] && \
                 echo -n "$RES" || \
                 echo -n "null"
