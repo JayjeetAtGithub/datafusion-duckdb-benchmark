@@ -24,9 +24,9 @@ for c in cores:
         start = timeit.default_timer()
         results = con.execute(query).fetchall()
         end = timeit.default_timer()
-        print(end - start)
 
         if try_num > 2:
+            print(end-start)
             # Append (query,iteration,time)
             with open("result.csv", "a") as myfile:
                 time = (end - start)
