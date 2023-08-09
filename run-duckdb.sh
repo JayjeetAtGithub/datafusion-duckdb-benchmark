@@ -28,9 +28,5 @@ cat queries-duckdb.sql | while read query; do
     echo "qnum: $QUERY_NUM"
     ./run-query-duckdb.py $QUERY_NUM  <<< "${query}" | tee /tmp/duckdb.log
 
-    #echo "${QUERY_NUM},${i},${RES}" >> result.csv
-#done
-#    echo "],"
-
     QUERY_NUM=$((QUERY_NUM + 1))
 done
