@@ -18,6 +18,7 @@ echo "Query,parallelism,iteration,time" >> result.csv
 cat queries-datafusion.sql | while read query; do
     sync
     echo 3 | sudo tee /proc/sys/vm/drop_caches >/dev/null
+    sync
 
     echo "$query" > /tmp/query.sql
     echo "qnum: $QUERY_NUM"

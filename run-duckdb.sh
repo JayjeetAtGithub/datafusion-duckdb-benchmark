@@ -24,6 +24,7 @@ cat ${CREATE} | ./create-view-duckdb.py
 cat queries-duckdb.sql | while read query; do
     sync
     echo 3 | sudo tee /proc/sys/vm/drop_caches >/dev/null
+    sync
 
     echo "qnum: $QUERY_NUM"
     ./run-query-duckdb.py $QUERY_NUM  <<< "${query}" | tee /tmp/duckdb.log
