@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
+import sys
+
 if __name__ == "__main__":
     db = str(sys.argv[1])
     sns.set_theme(style="whitegrid")
