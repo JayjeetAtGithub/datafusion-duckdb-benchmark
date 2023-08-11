@@ -1,7 +1,10 @@
+#!/bin/bash
+set -ex
+
 # Runs several benchmark
 
 # DATAFUSION_CLI=./datafusion-cli.28.0.0 CREATE=create-single-datafusion.sql bash run-datafusion.sh
-CREATE=create-single-duckdb.sql bash run-duckdb.sh
+# CREATE=create-single-duckdb.sql bash run-duckdb.sh
 
 # note need to run this with q34 commented out
 # DATAFUSION_CLI=./datafusion-cli.27.0.0 CREATE=create-single-datafusion.sql bash run-datafusion.sh
