@@ -17,7 +17,7 @@ cat queries-datafusion.sql | while read query; do
     echo "qnum: $QUERY_NUM"
     echo "$query"
 
-    for c in 1 2 4 8; do
+    for c in 1 2 4 8 16 32 64 128; do
         echo -n "["
         for i in $(seq 1 $TRIES); do
             # 1. there will be two query result, one for creating table another for executing the select statement
