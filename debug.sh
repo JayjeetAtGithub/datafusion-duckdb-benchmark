@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-CREATE=${CREATE:-create-single-datafusion.sql}
+CREATE=${CREATE:-create-multi-datafusion.sql}
 DATAFUSION_CLI=${DATAFUSION_CLI:-datafusion-cli}
 
 cat queries-datafusion.sql | while read query; do
