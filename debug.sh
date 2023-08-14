@@ -10,7 +10,6 @@ cat queries-datafusion.sql | while read query; do
     sync
 
     echo "$query" > /tmp/query.sql
-    echo "qnum: $QUERY_NUM"
     echo "$query"
 
     ${DATAFUSION_CLI} -f ${CREATE} /tmp/query.sql
