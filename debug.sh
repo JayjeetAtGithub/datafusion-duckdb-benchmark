@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -e
 
 CREATE=${CREATE:-create-single-datafusion.sql}
 DATAFUSION_CLI=${DATAFUSION_CLI:-datafusion-cli}
