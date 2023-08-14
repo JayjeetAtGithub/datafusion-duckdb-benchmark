@@ -12,5 +12,6 @@ cat queries-datafusion.sql | while read query; do
     echo "$query" > /tmp/query.sql
     echo "$query"
 
-    ${DATAFUSION_CLI} -f ${CREATE} /tmp/query.sql
+    DATAFUSION_EXECUTION_TARGET_PARTITIONS=1 ${DATAFUSION_CLI} -f ${CREATE} /tmp/query.sql
+    DATAFUSION_EXECUTION_TARGET_PARTITIONS=2 ${DATAFUSION_CLI} -f ${CREATE} /tmp/query.sql
 done
