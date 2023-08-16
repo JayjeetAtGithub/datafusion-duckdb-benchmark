@@ -8,10 +8,9 @@ if __name__ == "__main__":
     sns.set_theme(style="whitegrid", palette="bright")
 
     engines = ["datafusion", "duckdb"]
-    fig, axes = plt.subplots(3, 4, sharex=True, figsize=(10, 10))
-    fig.suptitle("Core Scaling")
+    fig, axes = plt.subplots(3, 4, sharex=True, figsize=(20, 10))
     fig.text(0.5, 0.04, 'Cores', ha='center')
-    fig.text(0.04, 0.5, 'Query Duration (s)', va='center', rotation='vertical')
+    fig.text(0.09, 0.5, 'Query Duration (s)', va='center', rotation='vertical')
     data = {}
 
     for engine in engines:
@@ -52,14 +51,4 @@ if __name__ == "__main__":
         axes.flat[ax_idx].set_title(f"Query {k}")
         ax_idx += 1
 
-    plt.show()
-
-    # df = pd.DataFrame(data)
-    # sns.barplot(x="query_no", errwidth=1, capsize=0.1, errorbar="sd", y="duration", hue="cores", data=df)
-    # plt.xlabel("Query No.")
-    # plt.ylabel("Duration (s)")
-    # plt.title(f"Core Scaling")
-    # plt.tight_layout()
-    # plt.show()
-    # plt.clf()
-    # plt.cla()
+    plt.savefig("scalability.pdf", bbox_inches='tight')
