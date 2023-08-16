@@ -42,13 +42,14 @@ if __name__ == "__main__":
     print(len(data))
 
     ax_idx = 0
-
     for k, v in data.items():
         df = pd.DataFrame(v)
-        g = sns.lineplot(ax=axes.flat[ax_idx], x="cores", err_style="band", errorbar="sd", y="duration", hue="engine", markers=True, dashes=False, style="engine", data=df)
-        g.set_xticklabels([1, 2, 4, 8, 16, 32, 64, 128])
+        g = sns.pointplot(ax=axes.flat[ax_idx], x="cores", errorbar="sd", y="duration", hue="engine", data=df)
         g.set(xlabel=None, ylabel=None)
         axes.flat[ax_idx].set_title(f"Query {k}")
+        axes.flat[ax_idx].xaxis.grid(True)
+        axes.flat[ax_idx].yaxis.grid(True)
         ax_idx += 1
 
+    # plt.show()
     plt.savefig("scalability.pdf", bbox_inches='tight')
