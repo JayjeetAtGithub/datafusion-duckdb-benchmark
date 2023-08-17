@@ -19,7 +19,8 @@ if __name__ == "__main__":
         lines = f.readlines()
 
         curr_query = 1
-        counter = 1
+        counter = 0
+        print(len(lines))
         for line in lines:
             data["engine"].append("duckdb")
             data["duration"].append(float(line)*1000)
@@ -28,10 +29,13 @@ if __name__ == "__main__":
             if counter % 5 == 0:
                 curr_query += 1
 
+        print(len(data["duration"]))
+        print(len(data["engine"]))
+        print(len(data["query"]))
+
     # parsing datafusion
     with open('experiments/tpch/datafusion.json') as f:
         datafusion_data = json.load(f)
-        print(datafusion_data)
 
         for query in datafusion_data["queries"]:
             for itr in query["iterations"]:
@@ -40,7 +44,6 @@ if __name__ == "__main__":
                 data["query"].append(int(query["query"].split(" ")[1]))
 
     df = pd.DataFrame(data)
-    print(df)
     g = sns.barplot(x="query", y="duration", errorbar="sd", errwidth=0.1, capsize=0.2, hue="engine", data=df)
     g.set(xlabel="Query", ylabel="Duration (ms)")
     plt.title("TPC-H Benchmark")
