@@ -46,10 +46,11 @@ if __name__ == "__main__":
         df = pd.DataFrame(v)
         g = sns.pointplot(ax=axes.flat[ax_idx], x="cores", errorbar="sd", y="duration", hue="engine", data=df)
         g.set(xlabel=None, ylabel=None)
+        g.set_yscale("log")
         axes.flat[ax_idx].set_title(f"Query {k}")
         axes.flat[ax_idx].xaxis.grid(True)
         axes.flat[ax_idx].yaxis.grid(True)
         ax_idx += 1
 
     # plt.show()
-    plt.savefig("scalability.pdf", bbox_inches='tight')
+    plt.savefig("scalability_log.pdf", bbox_inches='tight')
