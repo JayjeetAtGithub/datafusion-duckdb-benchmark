@@ -80,6 +80,6 @@ if __name__ == "__main__":
                     data["query"].append(query_no)
 
         df = pd.DataFrame(data)
-        g = sns.barplot(x="query", y="duration", errorbar="ci", errwidth=0.1, capsize=0.2, hue="engine", data=df)
+        g = sns.barplot(x="query", y="duration", errorbar="sd", errwidth=0.1, capsize=0.2, hue="engine", data=df)
         g.set(xlabel="Query", ylabel="Duration (s)")
         plt.savefig(f"{plot_type}.pdf", bbox_inches='tight')
