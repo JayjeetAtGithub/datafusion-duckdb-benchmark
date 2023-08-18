@@ -14,8 +14,12 @@ con.execute("PRAGMA enable_object_cache")
 
 # invoke like run-duckdb-query.py 1 << "txt of q1"
 query_num = sys.argv[1]
+sweep_cores = sys.argv[2]
 
-cores = [1, 2, 4, 8, 16, 32, 64, 128]
+if sweep_cores == "yes":
+    cores = [1, 2, 4, 8, 16, 32, 64, 128]
+else:
+    cores = [1]
 
 for c in cores:
     for try_num in range(1, 6):
