@@ -6,6 +6,8 @@ CREATE=${CREATE:-create-single-datafusion.sql}
 DATAFUSION_CLI=${DATAFUSION_CLI:-datafusion-cli}
 TRIES=5
 QUERY_NUM=1
+sweep_cores=$1
+
 echo "Using ${DATAFUSION_CLI} $CREATE, appending results to datafusion.csv"
 
 cat queries-datafusion.sql | while read query; do
@@ -17,7 +19,13 @@ cat queries-datafusion.sql | while read query; do
     echo "qnum: $QUERY_NUM"
     echo "$query"
 
-    for c in 1 2 4 8 16 32 64 128; do
+    if [ $sweep_cores -eq "multi" ]; then
+        core_arr=(1 2 4 8 16 32 64 128)
+    else
+        core_arr=(1)
+    fi
+
+    for c in ${core_arr[@]}; do
         echo -n "["
         for i in $(seq 1 $TRIES); do
             # 1. there will be two query result, one for creating table another for executing the select statement
