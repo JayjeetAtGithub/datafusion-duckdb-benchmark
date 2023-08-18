@@ -47,4 +47,4 @@ if __name__ == "__main__":
     g = sns.barplot(x="query", y="duration", errorbar="sd", errwidth=0.1, capsize=0.2, hue="engine", data=df)
     g.set(xlabel="Query", ylabel="Duration (ms)")
     plt.title("TPC-H Benchmark")
-    plt.savefig(f"comparison_tpch.pdf", bbox_inches='tight')
+    plt.savefig(f"comparison.tpch.pdf", bbox_inches='tight')

@@ -6,7 +6,7 @@ import sys
 
 if __name__ == "__main__":
     plot_type = str(sys.argv[1])
-    engines = ["datafusion", "duckdb"]
+    engines = ["duckdb", "datafusion"]
     sns.set_theme(style="whitegrid", palette="bright")
 
     if plot_type == "scalability":
@@ -16,7 +16,7 @@ if __name__ == "__main__":
         data = {}
 
         for engine in engines:
-            with open(f'experiments/clickbench/{engine}.csv') as f:
+            with open(f'experiments/clickbench/{plot_type}/{engine}.csv') as f:
                 lines = f.readlines()
 
             for line in lines:
@@ -57,6 +57,8 @@ if __name__ == "__main__":
         plt.savefig(f"{plot_type}.pdf", bbox_inches='tight')
     
     elif plot_type == "comparison":
+        plt.figure(figsize=(15,5))
+
         data = {
             "duration": [],
             "engine": [],
@@ -64,7 +66,7 @@ if __name__ == "__main__":
         }
 
         for engine in engines:
-            with open(f'experiments/clickbench/{engine}.csv') as f:
+            with open(f'experiments/clickbench/{plot_type}/{engine}.csv') as f:
                     lines = f.readlines()
 
             for line in lines:
@@ -82,4 +84,4 @@ if __name__ == "__main__":
         df = pd.DataFrame(data)
         g = sns.barplot(x="query", y="duration", errorbar="sd", errwidth=0.1, capsize=0.2, hue="engine", data=df)
         g.set(xlabel="Query", ylabel="Duration (s)")
-        plt.savefig(f"{plot_type}.pdf", bbox_inches='tight')
+        plt.savefig(f"{plot_type}.clickbench.pdf", bbox_inches='tight')
