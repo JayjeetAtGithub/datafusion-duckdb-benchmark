@@ -56,5 +56,3 @@ nvme0n1      259:0    0  1000G  0 disk
 ├─nvme0n1p1  259:4    0 999.9G  0 part /
 ├─nvme0n1p14 259:5    0     3M  0 part 
 └─nvme0n1p15 259:6    0   124M  0 part /boot/efi
-
-### v1: with Datafusion 28.0.0 and DuckDB 0.8.1

@@ -16,7 +16,7 @@ if __name__ == "__main__":
         data = {}
 
         for engine in engines:
-            with open(f'experiments/v1/{engine}.csv') as f:
+            with open(f'experiments/clickbench/{engine}.csv') as f:
                 lines = f.readlines()
 
             for line in lines:
@@ -64,7 +64,7 @@ if __name__ == "__main__":
         }
 
         for engine in engines:
-            with open(f'experiments/v1/{engine}.csv') as f:
+            with open(f'experiments/clickbench/{engine}.csv') as f:
                     lines = f.readlines()
 
             for line in lines:
