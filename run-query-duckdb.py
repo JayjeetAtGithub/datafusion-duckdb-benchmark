@@ -16,7 +16,7 @@ con.execute("PRAGMA enable_object_cache")
 query_num = sys.argv[1]
 sweep_cores = sys.argv[2]
 
-if sweep_cores == "yes":
+if sweep_cores == "multi":
     cores = [1, 2, 4, 8, 16, 32, 64, 128]
 else:
     cores = [1]

@@ -2,7 +2,7 @@
 set -ex
 
 mode=$1 # single/multi
-sweep_cores=$2 # yes/no
+sweep_cores=$2 # single/multi
 
 rm -rf datafusion.csv
 rm -rf duckdb.csv
