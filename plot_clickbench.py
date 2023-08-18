@@ -54,7 +54,7 @@ if __name__ == "__main__":
             axes.flat[ax_idx].yaxis.grid(True)
             ax_idx += 1
 
-        plt.savefig(f"{plot_type}.pdf", bbox_inches='tight')
+        plt.savefig(f"{plot_type}.clickbench.pdf", bbox_inches='tight')
     
     elif plot_type == "comparison":
         plt.figure(figsize=(15,5))
