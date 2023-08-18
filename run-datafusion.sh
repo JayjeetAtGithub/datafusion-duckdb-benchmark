@@ -19,7 +19,7 @@ cat queries-datafusion.sql | while read query; do
     echo "qnum: $QUERY_NUM"
     echo "$query"
 
-    if [ $sweep_cores -eq "multi" ]; then
+    if [ "$sweep_cores" == "multi" ]; then
         core_arr=(1 2 4 8 16 32 64 128)
     else
         core_arr=(1)
