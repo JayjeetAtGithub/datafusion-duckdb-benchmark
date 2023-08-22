@@ -12,7 +12,7 @@ source venv/bin/activate
 # clean out old database
 rm -f my-db.duckdb*
 
-cat ${CREATE} | ./create-view-duckdb.py
+cat ${CREATE} | ../common/create-view-duckdb.py
 
 cat queries-duckdb.sql | while read query; do
     sync
@@ -20,7 +20,7 @@ cat queries-duckdb.sql | while read query; do
     sync
 
     echo "qnum: $QUERY_NUM"
-    ./run-query-duckdb.py $QUERY_NUM $sweep_cores <<< "${query}" | tee /tmp/duckdb.log
+    ../common/run-query-duckdb.py $QUERY_NUM $sweep_cores <<< "${query}" | tee /tmp/duckdb.log
 
     QUERY_NUM=$((QUERY_NUM + 1))
 done
