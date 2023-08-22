@@ -8,10 +8,6 @@ QUERY_NUM=1
 RESULT_FILE=h2o_datafusion.csv
 sweep_cores=$1
 
-rm -rf G1_1e7_1e2_5_0.csv*
-wget https://github.com/duckdb/duckdb-data/releases/download/v1.0/G1_1e7_1e2_5_0.csv.gz
-gunzip G1_1e7_1e2_5_0.csv.gz
-
 echo "Using ${DATAFUSION_CLI} $CREATE, appending results to ${RESULT_FILE}"
 
 cat queries-datafusion.sql | while read query; do
