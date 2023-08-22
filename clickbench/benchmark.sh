@@ -1,8 +1,8 @@
 #!/bin/bash
 set -ex
 
-mode=$1 # single/multi
-sweep_cores=$2 # single/multi
+mode="${1:-single}" # single/multi
+sweep_cores="${2:-single}" # single/multi
 
 rm -rf clickbench_datafusion.csv
 rm -rf clickbench_duckdb.csv
