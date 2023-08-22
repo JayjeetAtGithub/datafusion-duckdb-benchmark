@@ -6,7 +6,7 @@ DATAFUSION_CLI=${DATAFUSION_CLI:-datafusion-cli}
 TRIES=5
 QUERY_NUM=1
 RESULT_FILE=h2o_datafusion.csv
-sweep_cores=$1
+sweep_cores=single
 
 echo "Using ${DATAFUSION_CLI} $CREATE, appending results to ${RESULT_FILE}"
 

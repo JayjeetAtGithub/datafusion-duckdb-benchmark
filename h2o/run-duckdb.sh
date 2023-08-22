@@ -5,7 +5,7 @@ CREATE=${CREATE:-create-single-duckdb.sql}
 TRIES=5
 QUERY_NUM=1
 RESULT_FILE=h2o_duckdb.csv
-sweep_cores=$1
+sweep_cores=single
 
 echo "Using $CREATE, appending results to ${RESULT_FILE}"
 
