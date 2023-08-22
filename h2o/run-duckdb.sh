@@ -9,6 +9,7 @@ sweep_cores=single
 
 echo "Using $CREATE, appending results to ${RESULT_FILE}"
 
+python3 -m venv `pwd`/venv
 source venv/bin/activate
 pip install duckdb==0.8.1 psutil
 

@@ -7,6 +7,7 @@ QUERY_NUM=1
 sweep_cores=$1
 echo "Using $CREATE, appending results to clickbench_duckdb.csv"
 
+python3 -m venv `pwd`/venv
 source venv/bin/activate
 pip install duckdb==0.8.1 psutil
 

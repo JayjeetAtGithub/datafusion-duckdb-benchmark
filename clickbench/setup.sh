@@ -9,5 +9,3 @@ popd
 
 echo "downloading hits..."
 wget -q --continue https://datasets.clickhouse.com/hits_compatible/hits.parquet
-
-python3 -m venv `pwd`/venv
