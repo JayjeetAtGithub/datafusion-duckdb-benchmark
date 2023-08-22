@@ -8,6 +8,7 @@ sweep_cores=$1
 echo "Using $CREATE, appending results to duckdb.csv"
 
 source venv/bin/activate
+pip install duckdb==0.8.1 psutil
 
 # clean out old database
 rm -f my-db.duckdb*
