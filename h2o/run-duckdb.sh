@@ -23,7 +23,7 @@ cat queries-duckdb.sql | while read query; do
     sync
 
     echo "qnum: $QUERY_NUM"
-    ../common/run-query-duckdb.py $QUERY_NUM $sweep_cores $RESULT_FILE <<< "${query}" | tee /tmp/duckdb.log
+    ../common/run-query-duckdb.py $QUERY_NUM $sweep_cores ${RESULT_FILE} <<< "${query}" | tee /tmp/duckdb.log
 
     QUERY_NUM=$((QUERY_NUM + 1))
 done
