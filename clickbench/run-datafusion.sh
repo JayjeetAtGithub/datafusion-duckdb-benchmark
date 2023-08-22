@@ -8,7 +8,7 @@ TRIES=5
 QUERY_NUM=1
 sweep_cores=$1
 
-echo "Using ${DATAFUSION_CLI} $CREATE, appending results to datafusion.csv"
+echo "Using ${DATAFUSION_CLI} $CREATE, appending results to clickbench_datafusion.csv"
 
 cat queries-datafusion.sql | while read query; do
     sync
@@ -41,7 +41,7 @@ cat queries-datafusion.sql | while read query; do
                     echo -n "null"
                 [[ "$i" != $TRIES ]] && echo -n ", "
 
-                echo "${QUERY_NUM},${c},${i},${RES}" >> datafusion.csv
+                echo "${QUERY_NUM},${c},${i},${RES}" >> clickbench_datafusion.csv
             fi
         done
         echo "],"

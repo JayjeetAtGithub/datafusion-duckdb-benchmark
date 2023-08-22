@@ -5,7 +5,7 @@ CREATE=${CREATE:-create-single-duckdb.sql}
 TRIES=5
 QUERY_NUM=1
 sweep_cores=$1
-echo "Using $CREATE, appending results to duckdb.csv"
+echo "Using $CREATE, appending results to clickbench_duckdb.csv"
 
 source venv/bin/activate
 pip install duckdb==0.8.1 psutil
@@ -21,7 +21,7 @@ cat queries-duckdb.sql | while read query; do
     sync
 
     echo "qnum: $QUERY_NUM"
-    ../common/run-query-duckdb.py $QUERY_NUM $sweep_cores <<< "${query}" | tee /tmp/duckdb.log
+    ../common/run-query-duckdb.py $QUERY_NUM $sweep_cores clickbench_duckdb.csv <<< "${query}" | tee /tmp/duckdb.log
 
     QUERY_NUM=$((QUERY_NUM + 1))
 done
