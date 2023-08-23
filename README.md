@@ -1,69 +1,49 @@
-# ClickBench: DataFusion / DuckDB comparision scripts
+# DataFusion / DuckDB Benchmarking Sripts
 
-This benchmark compares DataFusion to DuckDB performance with the  [ClickBench](https://github.com/ClickHouse/ClickBench) queries aganst the unmodified ClickBench parquet files.
-
-# Results
-![Result Chart](chart.png)
-
+Benchmarking DataFusion and DuckDB over ClickBench, TPC-H, and H2O.ai
 
 ## Versions
-* DataFusion 27.0.0
-* DataFusion 28.0.0
+* DataFusion 29.0.0
 * DuckDB 0.8.1
 
-## Scenarios
-* Single parquet file (hits.parquet)
+## Setting up the Environment
 
-## Download Data:
-```shell
-bash setup.sh
-```
-
-## Install DataFusion-CLI
-
-Install from crates.io:
-```shell
-cargo install datafusion-cli --version 28.0.0
-```
-
-Or build from source
-
-```shell
+```bash
+# install datafusion
 git clone https://github.com/apache/arrow-datafusion.git
 cd datafusion
+git checkout 29.0.0
 cargo install --path datafusion-cli
+
+# DuckDB will be installed by the scripts in runtime.
 ```
 
-## Install DuckDB
-```shell
-python3 -m venv `pwd`/venv
-source venv/bin/activate
-pip install duckdb psutil
+## ClickBench
+
+```bash
+cd clickbench/
+
+# Download the dataset
+bash setup.sh
+
+# Run the benchmarks. Results will be written to clickbench_datafusion.csv and clickbench_duckdb.csv
+bash benchmark.sh [dataset_type (single/multi)] [cores (single/multi)]
+
+# Plot the results. Supports scalability and simple comparison charts
+python3 plot.py [scalability/comparison]
 ```
 
-## Run queries
-queres are run with `run-datafusion.sh` or `run-duckdb.sh`.
+## H2O.ai
 
-DuckDB:
-```shell
-CREATE=create-single-duckdb.sql bash run-duckdb.sh
-```
+```bash
+cd h2o/
 
-DataFusion
-```shell
-DATAFUSION_CLI=./datafusion-cli.413eba1 CREATE=create-single-datafusion.sql bash run-datafusion.sh
-```
+# Download the dataset
+bash setup.sh
 
-More examples in [benchmark.sh](benchmark.sh)
+# Run the benchmarks. Results will be written to h2o_datafusion.csv and h2o_duckdb.csv
+bash benchmark.sh [cores (single/multi)]
 
-# Results
-Results are written into [`result.csv`](result.csv)
-
-
-## Python Example
-
-The example python script is [hash.py](hash.py)
-
-```shell
-python3 hash.py
+# Plot the results. Currently supports only single comparison charts
+python3 plot.py
 ```
