@@ -59,9 +59,10 @@ python3 plot.py
 
 ## TPC-H
 
-cd tpch/    
 
 ```bash
+cd tpch/
+
 # Run the benchmarks
 ./run-datafusion.sh
 ./run-duckdb.sh
