@@ -15,7 +15,11 @@ cd datafusion
 git checkout 29.0.0
 cargo install --path datafusion-cli
 
-# DuckDB will be installed by the scripts in runtime.
+# install duckdb
+git clone https://github.com/duckdb/duckdb
+cd duckdb
+git checkout v0.8.1
+BUILD_BENCHMARK=1 BUILD_TPCH=1 make -j$(nproc)
 ```
 
 ## ClickBench
