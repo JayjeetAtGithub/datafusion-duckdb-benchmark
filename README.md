@@ -47,3 +47,16 @@ bash benchmark.sh [cores (single/multi)]
 # Plot the results. Currently supports only single comparison charts
 python3 plot.py
 ```
+
+## TPC-H
+
+cd tpch/    
+
+```bash
+# Run the benchmarks
+./run-datafusion.sh
+./run-duckdb.sh
+
+# Plot the results
+python3 plot.py
+```
