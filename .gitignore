@@ -5,3 +5,5 @@ venv
 *~
 my-db*
 .history
+arrow-datafusion/
+duckdb/
