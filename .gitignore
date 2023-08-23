@@ -7,3 +7,6 @@ my-db*
 .history
 arrow-datafusion/
 duckdb/
+h2o/*.csv
+tpch/*.csv
+clickbench/*.csv
