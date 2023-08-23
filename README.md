@@ -70,3 +70,5 @@ cd tpch/
 # Plot the results
 python3 plot.py
 ```
+
+Credits: https://github.com/alamb/datafusion-duckdb-benchmark
