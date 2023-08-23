@@ -1,6 +1,6 @@
-# DataFusion / DuckDB Benchmarking Sripts
+# DataFusion / DuckDB Benchmarking Scripts
 
-Benchmarking DataFusion and DuckDB over ClickBench, TPC-H, and H2O.ai
+Benchmarking DataFusion and DuckDB over [ClickBench](https://benchmark.clickhouse.com), [TPC-H](https://www.tpc.org/tpch/default5.asp), and [H2O.ai](https://h2oai.github.io/db-benchmark/)
 
 ## Versions
 * DataFusion 29.0.0
