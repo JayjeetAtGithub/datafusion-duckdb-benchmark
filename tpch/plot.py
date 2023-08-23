@@ -15,7 +15,7 @@ if __name__ == "__main__":
     }
     
     # parsing duckdb
-    with open('experiments/tpch/duckdb') as f:
+    with open('tpch_duckdb') as f:
         lines = f.readlines()
 
         curr_query = 1
@@ -34,7 +34,7 @@ if __name__ == "__main__":
         print(len(data["query"]))
 
     # parsing datafusion
-    with open('experiments/tpch/datafusion.json') as f:
+    with open('datafusion.json') as f:
         datafusion_data = json.load(f)
 
         for query in datafusion_data["queries"]:
