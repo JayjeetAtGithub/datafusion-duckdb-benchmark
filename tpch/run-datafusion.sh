@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -e
 
 pwd=$(pwd)
 cd ../arrow-datafusion
