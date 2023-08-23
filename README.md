@@ -20,6 +20,11 @@ git clone https://github.com/duckdb/duckdb
 cd duckdb
 git checkout v0.8.1
 BUILD_BENCHMARK=1 BUILD_TPCH=1 make -j$(nproc)
+
+# Setup Python virtual environment
+python3 -m venv venv
+source venv/bin/activate
+pip install pyarrow pandas matplotlib seaborn
 ```
 
 ## ClickBench
