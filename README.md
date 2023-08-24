@@ -64,8 +64,8 @@ python3 plot.py
 cd tpch/
 
 # Run the benchmarks
-./run-datafusion.sh
-./run-duckdb.sh
+bash run-datafusion.sh
+bash run-duckdb.sh
 
 # Plot the results
 python3 plot.py
