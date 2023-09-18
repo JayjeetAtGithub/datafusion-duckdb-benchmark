@@ -3,7 +3,7 @@
 Benchmarking DataFusion and DuckDB over [ClickBench](https://benchmark.clickhouse.com), [TPC-H](https://www.tpc.org/tpch/default5.asp), and [H2O.ai](https://h2oai.github.io/db-benchmark/)
 
 ## Versions
-* DataFusion 29.0.0
+* DataFusion 31.0.0
 * DuckDB 0.8.1
 
 ## Setting up the Environment
@@ -11,9 +11,9 @@ Benchmarking DataFusion and DuckDB over [ClickBench](https://benchmark.clickhous
 ```bash
 # install datafusion
 git clone https://github.com/apache/arrow-datafusion.git
-cd datafusion
-git checkout 29.0.0
-cargo install --path datafusion-cli
+cd arrow-datafusion
+git checkout 31.0.0
+cargo install --profile release --path datafusion-cli
 
 # install duckdb
 git clone https://github.com/duckdb/duckdb
@@ -59,7 +59,6 @@ python3 plot.py
 
 ## TPC-H
 
-
 ```bash
 cd tpch/
 
@@ -71,4 +70,4 @@ bash run-duckdb.sh
 python3 plot.py
 ```
 
-Credits: https://github.com/alamb/datafusion-duckdb-benchmark
+**Credits**: https://github.com/alamb/datafusion-duckdb-benchmark
