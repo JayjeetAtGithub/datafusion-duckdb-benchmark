@@ -65,9 +65,8 @@ cd tpch/
 # Download the dataset
 bash setup.sh
 
-# Run the benchmarks
-bash run-datafusion.sh
-bash run-duckdb.sh
+# Run the benchmarks. Results will be written to tpch_datafusion.csv and tpch_duckdb.csv
+bash benchmark.sh [cores (single/multi)]
 
 # Plot the results
 python3 plot.py

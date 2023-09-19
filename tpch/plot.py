@@ -1,11 +1,13 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-import json
+
 import sys
 
 if __name__ == "__main__":
+    engines = ["duckdb", "datafusion"]
     sns.set_theme(style="whitegrid", palette="bright")
+   
     plt.figure(figsize=(15,5))
 
     data = {
@@ -13,38 +15,24 @@ if __name__ == "__main__":
         "engine": [],
         "query": [],
     }
-    
-    # parsing duckdb
-    with open('tpch_duckdb.out') as f:
-        lines = f.readlines()
 
-        curr_query = 1
-        counter = 0
-        print(len(lines))
+    for engine in engines:
+        with open(f'tpch_{engine}.csv') as f:
+                lines = f.readlines()
+
         for line in lines:
-            data["engine"].append("duckdb")
-            data["duration"].append(float(line)*1000)
-            data["query"].append(int(curr_query))
-            counter += 1
-            if counter % 5 == 0:
-                curr_query += 1
+                line = line.strip()
+                line = line.split(',')
+                query_no = int(line[0])
+                cores = int(line[1])
+                iteration = int(line[2])
+                duration = float(line[3])
 
-        print(len(data["duration"]))
-        print(len(data["engine"]))
-        print(len(data["query"]))
-
-    # parsing datafusion
-    with open('tpch_datafusion.json') as f:
-        datafusion_data = json.load(f)
-
-        for query in datafusion_data["queries"]:
-            for itr in query["iterations"]:
-                data["duration"].append(float(itr["elapsed"]))
-                data["engine"].append("datafusion")
-                data["query"].append(int(query["query"].split(" ")[1]))
+                data["duration"].append(duration)
+                data["engine"].append(engine)
+                data["query"].append(query_no)
 
     df = pd.DataFrame(data)
     g = sns.barplot(x="query", y="duration", errorbar="sd", errwidth=0.1, capsize=0.2, hue="engine", data=df)
-    g.set(xlabel="Query", ylabel="Duration (ms)")
-    plt.title("TPC-H Benchmark")
+    g.set(xlabel="Query", ylabel="Duration (s)")
     plt.savefig(f"comparison.tpch.pdf", bbox_inches='tight')
