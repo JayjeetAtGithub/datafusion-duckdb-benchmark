@@ -70,16 +70,19 @@ if __name__ == "__main__":
                     lines = f.readlines()
 
             for line in lines:
-                    line = line.strip()
-                    line = line.split(',')
-                    query_no = int(line[0])
-                    cores = int(line[1])
-                    iteration = int(line[2])
+                line = line.strip()
+                line = line.split(',')
+                query_no = int(line[0])
+                cores = int(line[1])
+                iteration = int(line[2])
+                try:
                     duration = float(line[3])
+                except:
+                    duration = 0
 
-                    data["duration"].append(duration)
-                    data["engine"].append(engine)
-                    data["query"].append(query_no)
+                data["duration"].append(duration)
+                data["engine"].append(engine)
+                data["query"].append(query_no)
 
         df = pd.DataFrame(data)
         g = sns.barplot(x="query", y="duration", errorbar="sd", errwidth=0.1, capsize=0.2, hue="engine", data=df)
