@@ -62,6 +62,9 @@ python3 plot.py
 ```bash
 cd tpch/
 
+# Download the dataset
+bash setup.sh
+
 # Run the benchmarks
 bash run-datafusion.sh
 bash run-duckdb.sh
