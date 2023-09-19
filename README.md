@@ -38,7 +38,7 @@ bash setup.sh
 # Run the benchmarks. Results will be written to clickbench_datafusion.csv and clickbench_duckdb.csv
 bash benchmark.sh [dataset_type (single/multi)] [cores (single/multi)]
 
-# Plot the results. Supports scalability and simple comparison charts
+# Plot the results. Supports scalability and comparison charts
 python3 plot.py [scalability/comparison]
 ```
 
@@ -53,7 +53,7 @@ bash setup.sh
 # Run the benchmarks. Results will be written to h2o_datafusion.csv and h2o_duckdb.csv
 bash benchmark.sh [cores (single/multi)]
 
-# Plot the results. Currently supports only single comparison charts
+# Plot the results. Currently supports only comparison charts
 python3 plot.py
 ```
 
