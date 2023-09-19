@@ -3,7 +3,7 @@ set -e
 
 pwd=$(pwd)
 cd ../arrow-datafusion
-git checkout 29.0.0
+git checkout 31.0.0
 cd benchmarks
 
 ./bench.sh data tpch
