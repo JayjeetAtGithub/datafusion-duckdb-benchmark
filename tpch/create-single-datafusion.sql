@@ -10,7 +10,7 @@ LOCATION '../arrow-datafusion/benchmarks/data/tpch_sf1/orders/part-0.parquet';
 
 CREATE EXTERNAL TABLE lineitem
 STORED AS PARQUET
-LOCATION '../arrow-datafusion/benchmarks/data/tpch_sf1/nation/part-0.parquet';
+LOCATION '../arrow-datafusion/benchmarks/data/tpch_sf1/lineitem/part-0.parquet';
 
 CREATE EXTERNAL TABLE part
 STORED AS PARQUET
