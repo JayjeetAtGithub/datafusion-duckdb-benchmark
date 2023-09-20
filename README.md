@@ -35,8 +35,12 @@ cd clickbench/
 # Download the dataset
 bash setup.sh
 
-# Run the benchmarks. Results will be written to clickbench_datafusion.csv and clickbench_duckdb.csv
-bash benchmark.sh [dataset_type (single/multi)] [cores (single/multi)]
+# The results are written to tpch_datafusion.csv and tpch_duckdb.csv
+# Run comparison benchmarks
+bash benchmark.sh single single
+
+# Run scalability benchmarks
+bash benchmark.sh multi multi
 
 # Plot the results. Supports scalability and comparison charts
 python3 plot.py [scalability/comparison]
