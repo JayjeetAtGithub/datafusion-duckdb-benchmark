@@ -25,7 +25,10 @@ if __name__ == "__main__":
                 query_no = int(line[0])
                 cores = int(line[1])
                 iteration = int(line[2])
-                duration = float(line[3])
+                try:
+                    duration = float(line[3])
+                except:
+                    duration = 0
 
                 if data.get(query_no, None) == None:
                     data[query_no] = [{
