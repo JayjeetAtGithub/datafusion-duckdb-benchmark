@@ -10,7 +10,7 @@ sweep_cores=$1
 
 echo "Using ${DATAFUSION_CLI} $CREATE, appending results to ${RESULT_FILE}"
 
-cat queries-datafusion.sql | while read query; do
+cat queries.sql | while read query; do
     sync
     echo 3 | sudo tee /proc/sys/vm/drop_caches >/dev/null
     sync
