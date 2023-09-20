@@ -36,14 +36,13 @@ cd clickbench/
 bash setup.sh
 
 # The results are written to tpch_datafusion.csv and tpch_duckdb.csv
-# Run comparison benchmarks
+# Run and plot comparison benchmarks
 bash benchmark.sh single single
+python3 plot.py comparison
 
-# Run scalability benchmarks
+# Run and plot scalability benchmarks
 bash benchmark.sh multi multi
-
-# Plot the results. Supports scalability and comparison charts
-python3 plot.py [scalability/comparison]
+python3 plot.py scalability
 ```
 
 ## H2O.ai
