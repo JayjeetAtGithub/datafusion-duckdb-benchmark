@@ -10,9 +10,9 @@ if __name__ == "__main__":
     sns.set_theme(style="whitegrid", palette="bright")
 
     if plot_type == "scalability":
-        fig, axes = plt.subplots(3, 4, sharex=True, figsize=(20, 10))
+        fig, axes = plt.subplots(5, 8, sharex=True, figsize=(20, 10))
         fig.text(0.5, 0.04, 'Cores', ha='center')
-        fig.text(0.09, 0.5, 'Query Duration (s)', va='center', rotation='vertical')
+        fig.text(0.08, 0.5, 'Query Duration (s)', va='center', rotation='vertical')
         data = {}
 
         for engine in engines:
@@ -55,10 +55,13 @@ if __name__ == "__main__":
             axes.flat[ax_idx].set_title(f"Query {k}")
             axes.flat[ax_idx].xaxis.grid(True)
             axes.flat[ax_idx].yaxis.grid(True)
+            handles, labels = axes.flat[ax_idx].get_legend_handles_labels()
+            axes.flat[ax_idx].get_legend().remove()
             ax_idx += 1
-
+        
+        fig.legend(handles, labels, loc='upper center')
         plt.savefig(f"{plot_type}.clickbench.pdf", bbox_inches='tight')
-    
+
     elif plot_type == "comparison":
         plt.figure(figsize=(15,5))
 
