@@ -71,7 +71,7 @@ bash setup.sh [scale_factor (1/10)]
 # Run the benchmarks. Results will be written to tpch_datafusion.csv and tpch_duckdb.csv
 bash benchmark.sh [cores (single/multi)]
 
-# Plot the results
+# Plot the results. Currently supports only comparison charts
 python3 plot.py
 ```
 
