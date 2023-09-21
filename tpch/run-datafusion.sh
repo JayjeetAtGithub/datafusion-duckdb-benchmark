@@ -28,7 +28,12 @@ cat queries.sql | while read query; do
     for c in ${core_arr[@]}; do
         echo -n "["
         for i in $(seq 1 $TRIES); do
-            RES=`DATAFUSION_EXECUTION_TARGET_PARTITIONS=${c} ${DATAFUSION_CLI} -f ${CREATE} /tmp/query.sql 2>&1 | grep "Query took" | sed -n 9p | awk '{print $7}'`
+
+            if [ "$query" == 15 ]; then
+                RES=`DATAFUSION_EXECUTION_TARGET_PARTITIONS=${c} ${DATAFUSION_CLI} -f ${CREATE} /tmp/query.sql 2>&1 | grep "Query took" | sed -n 11p | awk '{print $7}'`
+            else
+                RES=`DATAFUSION_EXECUTION_TARGET_PARTITIONS=${c} ${DATAFUSION_CLI} -f ${CREATE} /tmp/query.sql 2>&1 | grep "Query took" | sed -n 9p | awk '{print $7}'`
+            fi
             
             # omit the first 2 cold starts
             if [[ $i -gt 2 ]]; then
