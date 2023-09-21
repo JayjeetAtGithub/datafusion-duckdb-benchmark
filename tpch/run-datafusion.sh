@@ -29,7 +29,7 @@ cat queries.sql | while read query; do
         echo -n "["
         for i in $(seq 1 $TRIES); do
 
-            if [ "$query" == "15" ]; then
+            if [ "$QUERY_NUM" == 15 ]; then
                 RES=`DATAFUSION_EXECUTION_TARGET_PARTITIONS=${c} ${DATAFUSION_CLI} -f ${CREATE} /tmp/query.sql 2>&1 | grep "Query took" | sed -n 10p | awk '{print $7}'`
             else
                 RES=`DATAFUSION_EXECUTION_TARGET_PARTITIONS=${c} ${DATAFUSION_CLI} -f ${CREATE} /tmp/query.sql 2>&1 | grep "Query took" | sed -n 9p | awk '{print $7}'`
