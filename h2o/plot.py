@@ -17,7 +17,7 @@ if __name__ == "__main__":
     }
 
     for engine in engines:
-        with open(f'h2o_{engine}.csv') as f:
+        with open(f'../results/csvs/h2o_{engine}.csv') as f:
                 lines = f.readlines()
 
         for line in lines:
@@ -35,4 +35,4 @@ if __name__ == "__main__":
     df = pd.DataFrame(data)
     g = sns.barplot(x="query", y="duration", errorbar="sd", errwidth=0.1, capsize=0.2, hue="engine", data=df)
     g.set(xlabel="Query", ylabel="Duration (s)")
-    plt.savefig(f"comparison.h2o.pdf", bbox_inches='tight')
+    plt.savefig(f"../results/plots/comparison.h2o.pdf", bbox_inches='tight')
