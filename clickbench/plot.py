@@ -6,7 +6,7 @@ import sys
 
 if __name__ == "__main__":
     plot_type = str(sys.argv[1])
-    engines = ["duckdb", "datafusion"]
+    engines = ["datafusion", "duckdb"]
     sns.set_theme(style="whitegrid", palette="bright")
 
     if plot_type == "scalability":
@@ -15,8 +15,10 @@ if __name__ == "__main__":
         fig.text(0.08, 0.5, 'Query Duration (s)', va='center', rotation='vertical')
         data = {}
 
+        defective_queries = set()
+
         for engine in engines:
-            with open(f'clickbench_{engine}.csv') as f:
+            with open(f'../results/csvs/clickbench_{engine}.csv') as f:
                 lines = f.readlines()
 
             for line in lines:
@@ -28,6 +30,7 @@ if __name__ == "__main__":
                 try:
                     duration = float(line[3])
                 except:
+                    defective_queries.add(query_no)
                     duration = 0
 
                 if data.get(query_no, None) == None:
@@ -42,9 +45,9 @@ if __name__ == "__main__":
                         "cores": cores,
                         "duration": duration,
                     })
-        
-        print(data)
-        print(len(data))
+
+        for q in defective_queries:
+            data.pop(q)
 
         ax_idx = 0
         for k, v in data.items():
@@ -60,7 +63,7 @@ if __name__ == "__main__":
             ax_idx += 1
         
         fig.legend(handles, labels, loc='upper center')
-        plt.savefig(f"{plot_type}.clickbench.pdf", bbox_inches='tight')
+        plt.savefig(f"../results/plots/{plot_type}.clickbench.pdf", bbox_inches='tight')
 
     elif plot_type == "comparison":
         plt.figure(figsize=(15,5))
@@ -71,8 +74,10 @@ if __name__ == "__main__":
             "query": [],
         }
 
+        defective_queries = set()
+
         for engine in engines:
-            with open(f'clickbench_{engine}.csv') as f:
+            with open(f'../results/csvs/clickbench_{engine}.csv') as f:
                     lines = f.readlines()
 
             for line in lines:
@@ -81,16 +86,20 @@ if __name__ == "__main__":
                 query_no = int(line[0])
                 cores = int(line[1])
                 iteration = int(line[2])
-                try:
-                    duration = float(line[3])
-                except:
-                    duration = 0
+                if cores == 1:
+                    try:
+                        duration = float(line[3])
+                    except:
+                        defective_queries.add(query_no)
+                        duration = 0
+                    
+                    if query_no not in defective_queries:
+                        data["duration"].append(duration)
+                        data["engine"].append(engine)
+                        data["query"].append(query_no)
 
-                data["duration"].append(duration)
-                data["engine"].append(engine)
-                data["query"].append(query_no)
 
         df = pd.DataFrame(data)
         g = sns.barplot(x="query", y="duration", errorbar="sd", errwidth=0.1, capsize=0.2, hue="engine", data=df)
         g.set(xlabel="Query", ylabel="Duration (s)")
-        plt.savefig(f"{plot_type}.clickbench.pdf", bbox_inches='tight')
+        plt.savefig(f"../results/plots/{plot_type}.clickbench.pdf", bbox_inches='tight')

@@ -28,7 +28,7 @@ def fix_duckdb_results(datafusion_results, duckdb_results):
 
 
 if __name__ == "__main__":
-    benches = ["tpchsf10", "h2o", "clickbench"]
+    benches = ["tpch", "h2o", "clickbench"]
     for bench in benches:
         table = list()
         datafusion_results = read_file(f"csvs/{bench}_datafusion.csv")
