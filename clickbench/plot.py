@@ -33,21 +33,19 @@ if __name__ == "__main__":
                     defective_queries.add(query_no)
                     duration = 0
 
-                if data.get(query_no, None) == None:
-                    data[query_no] = [{
-                        "engine": engine,
-                        "cores": cores,
-                        "duration": duration,
-                    }]
-                else:
-                    data[query_no].append({
-                        "engine": engine,
-                        "cores": cores,
-                        "duration": duration,
-                    })
-
-        for q in defective_queries:
-            data.pop(q)
+                if query_no not in defective_queries:
+                    if data.get(query_no, None) == None:
+                        data[query_no] = [{
+                            "engine": engine,
+                            "cores": cores,
+                            "duration": duration,
+                        }]
+                    else:
+                        data[query_no].append({
+                            "engine": engine,
+                            "cores": cores,
+                            "duration": duration,
+                        })
 
         ax_idx = 0
         for k, v in data.items():
