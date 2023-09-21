@@ -66,7 +66,7 @@ python3 plot.py
 cd tpch/
 
 # Download the dataset
-bash setup.sh [scale_factor (1/10)]
+bash setup.sh
 
 # Run the benchmarks. Results will be written to tpch_datafusion.csv and tpch_duckdb.csv
 bash benchmark.sh [cores (single/multi)]
