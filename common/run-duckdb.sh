@@ -12,7 +12,7 @@ echo "Using ${CREATE}, appending results to ${RESULT_FILE}"
 
 python3 -m venv `pwd`/venv
 source venv/bin/activate
-pip install duckdb==0.9.0 psutil
+pip install --upgrade duckdb==0.9.0 psutil
 
 # clean out old database
 rm -f *.duckdb*

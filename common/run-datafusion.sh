@@ -12,7 +12,7 @@ echo "Using ${CREATE}, appending results to ${RESULT_FILE}"
 
 python3 -m venv `pwd`/venv
 source venv/bin/activate
-pip install datafusion==31.0.0
+pip install --upgrade datafusion==31.0.0
 
 cat ${QUERIES} | while read query; do
     sync
