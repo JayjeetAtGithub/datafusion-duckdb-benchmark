@@ -36,7 +36,7 @@ if __name__ == "__main__":
         os.environ["DATAFUSION_EXECUTION_TARGET_PARTITIONS"] = str(c)
         for try_num in range(1, 6):
             start = timeit.default_timer()
-            df = ctx.sql(query)
+            df = ctx.sql(query).collect()
             end = timeit.default_timer()
 
             # omit the first 2 cold starts
