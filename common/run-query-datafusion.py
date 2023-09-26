@@ -15,9 +15,14 @@ if __name__ == "__main__":
     ctx = SessionContext()
 
     # invoke like run-datafusion-query.py 1 << "txt of q1"
-    query_num = sys.argv[1]
-    sweep_cores = sys.argv[2]
-    result_file = sys.argv[3]
+    create_query_file = sys.argv[1]
+    query_num = sys.argv[2]
+    sweep_cores = sys.argv[3]
+    result_file = sys.argv[4]
+
+    with open(create_query_file, "r") as f:
+        create_query = f.read()
+        ctx.sql(create_query)
 
     if sweep_cores == "multi":
         cores = [1, 2, 4, 8, 16, 32, 64, 128]
