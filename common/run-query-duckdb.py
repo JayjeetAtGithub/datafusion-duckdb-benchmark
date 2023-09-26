@@ -31,6 +31,7 @@ if __name__ == "__main__":
             start = timeit.default_timer()
             results = con.execute(query).fetchall()
             end = timeit.default_timer()
+            print(type(results))
 
             # omit the first 2 cold starts
             if try_num > 2:
