@@ -31,11 +31,10 @@ if __name__ == "__main__":
             start = timeit.default_timer()
             table = con.execute(query).arrow()
             end = timeit.default_timer()
-            print(f"{table.num_rows} read in {end-start} seconds")
+            print(f"{table.num_rows} rows read in {end-start} seconds")
 
             # omit the first 2 cold starts
             if try_num > 2:
-                print(end-start)
                 # Append (query,iteration,time)
                 with open(result_file, "a") as myfile:
                     time = (end - start)
