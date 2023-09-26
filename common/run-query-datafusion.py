@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 import sys
 import timeit
 
@@ -24,6 +25,7 @@ if __name__ == "__main__":
         cores = [1]
 
     for c in cores:
+        os.setenv("DATAFUSION_EXECUTION_TARGET_PARTITIONS", str(c))
         for try_num in range(1, 6):
             start = timeit.default_timer()
             df = ctx.sql(query)
