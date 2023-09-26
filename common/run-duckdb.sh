@@ -19,7 +19,7 @@ rm -f *.duckdb*
 
 cat ${CREATE} | ../common/create-view-duckdb.py
 
-cat queries.sql | while read query; do
+cat ${QUERIES} | while read query; do
     sync
     echo 3 | sudo tee /proc/sys/vm/drop_caches >/dev/null
     sync
