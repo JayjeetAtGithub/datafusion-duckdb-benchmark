@@ -38,7 +38,7 @@ if __name__ == "__main__":
         for try_num in range(1, 6):
             start = timeit.default_timer()
             if query_num == "15" and result_file == "tpch_datafusion.csv":
-                query_parts = query.split(";")
+                query_parts = query.split(";")[:-1]
                 for query_part in query_parts:
                     result = ctx.sql(f"{query_part.strip()};").collect()
             else:
