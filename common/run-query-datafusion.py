@@ -37,7 +37,12 @@ if __name__ == "__main__":
         os.environ["DATAFUSION_EXECUTION_TARGET_PARTITIONS"] = str(c)
         for try_num in range(1, 6):
             start = timeit.default_timer()
-            result = ctx.sql(query).to_pylist()
+            if query_num == "15" and result_file == "tpch_datafusion.csv":
+                query_parts = query.split(";")
+                for query_part in query_parts:
+                    result = ctx.sql(f"{query_part.strip()};").to_pylist()
+            else:
+                result = ctx.sql(query).to_pylist()
             end = timeit.default_timer()
             print(end-start)
 
