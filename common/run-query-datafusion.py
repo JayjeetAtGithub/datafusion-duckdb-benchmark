@@ -40,9 +40,9 @@ if __name__ == "__main__":
             if query_num == "15" and result_file == "tpch_datafusion.csv":
                 query_parts = query.split(";")
                 for query_part in query_parts:
-                    result = ctx.sql(f"{query_part.strip()};").to_pylist()
+                    result = ctx.sql(f"{query_part.strip()};").collect()
             else:
-                result = ctx.sql(query).to_pylist()
+                result = ctx.sql(query).collect()
             end = timeit.default_timer()
             print(end-start)
 
