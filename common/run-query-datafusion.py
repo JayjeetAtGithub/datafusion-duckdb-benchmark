@@ -20,13 +20,12 @@ if __name__ == "__main__":
     sweep_cores = sys.argv[3]
     result_file = sys.argv[4]
 
-    print("Setting up the table")
     with open(create_query_file, "r") as f:
         create_query = f.read()
         start = timeit.default_timer()
         ctx.sql(create_query)
         end = timeit.default_timer()
-        print(end - start)
+        print("Setup table: {}".format(end - start))
 
     if sweep_cores == "multi":
         cores = [1, 2, 4, 8, 16, 32, 64, 128]
