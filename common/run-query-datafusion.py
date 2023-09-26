@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
+import sys
 import timeit
+
 from datafusion import SessionContext
 
 
