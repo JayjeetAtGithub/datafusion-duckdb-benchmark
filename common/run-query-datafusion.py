@@ -21,9 +21,10 @@ if __name__ == "__main__":
     result_file = sys.argv[4]
 
     with open(create_query_file, "r") as f:
-        create_query = f.read()
+        create_queries = f.readlines()
         start = timeit.default_timer()
-        ctx.sql(create_query)
+        for create_query in create_queries:
+            ctx.sql(create_query)
         end = timeit.default_timer()
         print("Setup table: {}".format(end - start))
 
