@@ -4,7 +4,7 @@ Benchmarking DataFusion and DuckDB over [ClickBench](https://benchmark.clickhous
 
 ## Versions
 * DataFusion 31.0.0
-* DuckDB 0.9.0
+* DuckDB 0.8.1
 
 ## Setting up the Environment
 
@@ -18,7 +18,7 @@ cargo install --profile release --path datafusion-cli
 # install duckdb
 git clone https://github.com/duckdb/duckdb
 cd duckdb
-git checkout v0.9.0
+git checkout v0.8.1
 BUILD_BENCHMARK=1 BUILD_TPCH=1 make -j$(nproc)
 
 # Setup Python virtual environment
