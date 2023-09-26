@@ -13,6 +13,7 @@ if __name__ == "__main__":
     # Read query from stdin
     query = sys.stdin.read()
 
+    # Creating tables
     start = timeit.default_timer()
     ctx.sql(query)
     end = timeit.default_timer()
