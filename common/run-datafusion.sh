@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # create file
-CREATE=${CREATE:-create-single-datafusion.sql}
-QUERIES=$1
-SWEEP_CORES=$2
-RESULT_FILE=$3
+CREATE=$1
+QUERIES=$2
+SWEEP_CORES=$3
+RESULT_FILE=$4
 TRIES=5
 QUERY_NUM=1
 
