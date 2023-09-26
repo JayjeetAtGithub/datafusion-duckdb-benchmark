@@ -1,20 +1,17 @@
 #!/usr/bin/env python3
 
-import duckdb
 import timeit
-import psutil
-import sys
+from datafusion import SessionContext
 
 
 if __name__ == "__main__":
     query = sys.stdin.read()
     print(query)
 
-    con = duckdb.connect(database="my-db.duckdb", read_only=False)
-    # enable parquet metadata cache
-    con.execute("PRAGMA enable_object_cache")
+    # create a DataFusion context
+    ctx = SessionContext()
 
-    # invoke like run-duckdb-query.py 1 << "txt of q1"
+    # invoke like run-datafusion-query.py 1 << "txt of q1"
     query_num = sys.argv[1]
     sweep_cores = sys.argv[2]
     result_file = sys.argv[3]
@@ -26,10 +23,8 @@ if __name__ == "__main__":
 
     for c in cores:
         for try_num in range(1, 6):
-            # set number of cores
-            con.execute("PRAGMA threads={}".format(c))
             start = timeit.default_timer()
-            results = con.execute(query).fetchall()
+            df = ctx.sql(query)
             end = timeit.default_timer()
 
             # omit the first 2 cold starts
