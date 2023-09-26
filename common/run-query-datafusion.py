@@ -37,9 +37,9 @@ if __name__ == "__main__":
         os.environ["DATAFUSION_EXECUTION_TARGET_PARTITIONS"] = str(c)
         for try_num in range(1, 6):
             start = timeit.default_timer()
-            table = ctx.sql(query).to_arrow_table()
+            result = ctx.sql(query).to_pylist()
             end = timeit.default_timer()
-            print(f"{table.num_rows} rows read in {end-start} seconds")
+            print(end-start)
 
             # omit the first 2 cold starts
             if try_num > 2:
