@@ -29,9 +29,8 @@ if __name__ == "__main__":
             # set number of cores
             con.execute("PRAGMA threads={}".format(c))
             start = timeit.default_timer()
-            results = con.execute(query).fetchall()
+            table = con.execute(query).arrow()
             end = timeit.default_timer()
-            print(type(results))
 
             # omit the first 2 cold starts
             if try_num > 2:
