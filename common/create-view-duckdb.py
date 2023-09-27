@@ -6,13 +6,16 @@ import duckdb
 import timeit
 import psutil
 
-con = duckdb.connect(database="my-db.duckdb", read_only=False)
 
-query = sys.stdin.read()
+if __name__ == "__main__":
+    # Create DuckDB connection
+    con = duckdb.connect(database="my-db.duckdb", read_only=False)
 
-print("Set up a view over the Parquet files")
+    # Read query from stdin
+    query = sys.stdin.read()
 
-start = timeit.default_timer()
-con.execute(query)
-end = timeit.default_timer()
-print(end - start)
+    print("Set up a view over the Parquet files")
+    start = timeit.default_timer()
+    con.execute(query)
+    end = timeit.default_timer()
+    print(end - start)

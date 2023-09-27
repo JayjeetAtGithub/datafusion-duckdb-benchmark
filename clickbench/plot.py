@@ -75,7 +75,7 @@ if __name__ == "__main__":
         defective_queries = set()
 
         for engine in engines:
-            with open(f'../results/csvs/clickbench_{engine}.csv') as f:
+            with open(f'clickbench_{engine}.csv') as f:
                     lines = f.readlines()
 
             for line in lines:
@@ -103,4 +103,4 @@ if __name__ == "__main__":
 
         g = sns.barplot(x="query", y="duration", errorbar="sd", errwidth=0.1, capsize=0.2, hue="engine", data=df)
         g.set(xlabel="Query", ylabel="Duration (s)")
-        plt.savefig(f"../results/plots/{plot_type}.clickbench.pdf", bbox_inches='tight')
+        plt.savefig(f"{plot_type}.clickbench.pdf", bbox_inches='tight')
