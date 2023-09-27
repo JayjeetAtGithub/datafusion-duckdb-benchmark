@@ -5,6 +5,7 @@ pwd=$(pwd)
 cd ../arrow-datafusion
 git checkout 31.0.0
 
+# we only use scale factor 10
 scale_factor=10
 
 rm -rf ./benchmarks/data/tpch_dataset
