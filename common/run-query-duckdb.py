@@ -20,7 +20,7 @@ if __name__ == "__main__":
     result_file = sys.argv[3]
 
     if sweep_cores == "multi":
-        cores = [1, 2, 4, 8, 16, 32, 64, 128]
+        cores = [1, 2, 4, 8]
     else:
         cores = [1]
 
