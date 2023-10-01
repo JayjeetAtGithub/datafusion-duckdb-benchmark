@@ -18,7 +18,7 @@ if __name__ == "__main__":
         defective_queries = set()
 
         for engine in engines:
-            with open(f'../results/csvs/clickbench_{engine}.csv') as f:
+            with open(f'clickbench_{engine}.csv') as f:
                 lines = f.readlines()
 
             for line in lines:
@@ -61,7 +61,7 @@ if __name__ == "__main__":
             ax_idx += 1
         
         fig.legend(handles, labels, loc='upper center')
-        plt.savefig(f"../results/plots/{plot_type}.clickbench.pdf", bbox_inches='tight')
+        plt.savefig(f"{plot_type}.clickbench.pdf", bbox_inches='tight')
 
     elif plot_type == "comparison":
         plt.figure(figsize=(15,5))
