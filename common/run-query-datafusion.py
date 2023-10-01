@@ -4,15 +4,12 @@ import os
 import sys
 import timeit
 
-from datafusion import SessionContext
+from datafusion import SessionContext, SessionConfig, RuntimeConfig
 
 
 if __name__ == "__main__":
     query = sys.stdin.read()
     print(query)
-
-    # create a DataFusion context
-    ctx = SessionContext()
 
     # invoke like run-datafusion-query.py 1 << "txt of q1"
     create_query_file = sys.argv[1]
@@ -20,21 +17,25 @@ if __name__ == "__main__":
     sweep_cores = sys.argv[3]
     result_file = sys.argv[4]
 
-    with open(create_query_file, "r") as f:
-        create_queries = f.readlines()
-        start = timeit.default_timer()
-        for create_query in create_queries:
-            ctx.sql(create_query)
-        end = timeit.default_timer()
-        print("Setup table: {}".format(end - start))
-
     if sweep_cores == "multi":
         cores = [1, 2, 4, 8, 16, 32, 64, 128]
     else:
         cores = [1]
 
     for c in cores:
-        os.environ["DATAFUSION_EXECUTION_TARGET_PARTITIONS"] = str(c)
+        # create a DataFusion context
+        config = SessionConfig().with_target_partitions(8)
+        ctx = SessionContext(config, RuntimeConfig)
+
+        with open(create_query_file, "r") as f:
+            create_queries = f.readlines()
+            start = timeit.default_timer()
+            for create_query in create_queries:
+                ctx.sql(create_query)
+            end = timeit.default_timer()
+        
+        print("Setup table: {}".format(end - start))
+
         for try_num in range(1, 6):
             start = timeit.default_timer()
             if query_num == "15" and result_file == "tpch_datafusion.csv":
