@@ -10,7 +10,7 @@ if __name__ == "__main__":
     sns.set_theme(style="whitegrid", palette="bright")
 
     if plot_type == "scalability":
-        fig, axes = plt.subplots(5, 8, sharex=True, figsize=(20, 10))
+        fig, axes = plt.subplots(5, 9, sharex=True, figsize=(20, 10))
         fig.text(0.5, 0.04, 'Cores', ha='center')
         fig.text(0.08, 0.5, 'Query Duration (s)', va='center', rotation='vertical')
         data = {}
