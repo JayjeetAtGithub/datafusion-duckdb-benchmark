@@ -29,7 +29,8 @@ if __name__ == "__main__":
                 iteration = int(line[2])
                 try:
                     duration = float(line[3])
-                    ok_queries.add(query_no)
+                    if engine == "datafusion":
+                        ok_queries.add(query_no)
                 except:
                     pass
 
@@ -87,7 +88,8 @@ if __name__ == "__main__":
                 if cores == 1:
                     try:
                         duration = float(line[3])
-                        ok_queries.add(query_no)
+                        if engine == "datafusion":
+                            ok_queries.add(query_no)
                     except:
                         pass
                     
