@@ -15,7 +15,7 @@ if __name__ == "__main__":
         fig.text(0.08, 0.5, 'Query Duration (s)', va='center', rotation='vertical')
         data = {}
 
-        defective_queries = set()
+        ok_queries = set()
 
         for engine in engines:
             with open(f'clickbench_{engine}.csv') as f:
@@ -29,11 +29,11 @@ if __name__ == "__main__":
                 iteration = int(line[2])
                 try:
                     duration = float(line[3])
+                    ok_queries.add(query_no)
                 except:
-                    defective_queries.add(query_no)
-                    duration = 0
+                    pass
 
-                if query_no not in defective_queries:
+                if query_no in ok_queries:
                     if data.get(query_no, None) == None:
                         data[query_no] = [{
                             "engine": engine,
@@ -72,7 +72,7 @@ if __name__ == "__main__":
             "query": [],
         }
 
-        defective_queries = set()
+        ok_queries = set()
 
         for engine in engines:
             with open(f'clickbench_{engine}.csv') as f:
@@ -87,11 +87,11 @@ if __name__ == "__main__":
                 if cores == 1:
                     try:
                         duration = float(line[3])
+                        ok_queries.add(query_no)
                     except:
-                        defective_queries.add(query_no)
-                        duration = 0
+                        pass
                     
-                    if query_no not in defective_queries:
+                    if query_no in ok_queries:
                         data["duration"].append(duration)
                         data["engine"].append(engine)
                         data["query"].append(query_no)
