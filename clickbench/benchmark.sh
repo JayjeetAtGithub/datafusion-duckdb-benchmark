@@ -1,11 +1,16 @@
 #!/bin/bash
 set -e
 
-mode="${1:-single}" # single/multi
-sweep_cores="${2:-single}" # single/multi
+# single = single parquet file (hits.parquet)
+# multi = multiple parquet files (100 files in hits_multi)
+mode="single"
 
-rm -rf clickbench_datafusion.csv
-rm -rf clickbench_duckdb.csv
+# single = single core
+# multi = sweep multiple cores
+sweep_cores="${1:-single}"
 
-bash ../common/run-datafusion.sh create-$mode-datafusion.sql queries-datafusion.sql $sweep_cores clickbench_datafusion.csv
-bash ../common/run-duckdb.sh create-$mode-duckdb.sql queries-duckdb.sql $sweep_cores clickbench_duckdb.csv
+rm -rf ../results/latest/clickbench_datafusion.csv
+rm -rf ../results/latest/clickbench_duckdb.csv
+
+bash ../common/run-datafusion.sh create-$mode-datafusion.sql queries-datafusion.sql $sweep_cores ../results/latest/clickbench_datafusion.csv
+bash ../common/run-duckdb.sh create-$mode-duckdb.sql queries-duckdb.sql $sweep_cores ../results/latest/clickbench_duckdb.csv
