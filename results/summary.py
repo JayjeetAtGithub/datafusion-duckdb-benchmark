@@ -36,21 +36,31 @@ if __name__ == "__main__":
 
         datafusion_results, duckdb_results = fix_duckdb_results(datafusion_results, duckdb_results)
 
+        # track overall best/worst times
+        best_times = 1
+        worst_times = 0
         print(f"{bench}: ")
         table.append(["Query", "DataFusion", "DuckDB", "Summary (Datafusion / DuckDB))"])
         for df_key, duck_key in zip(datafusion_results.keys(), duckdb_results.keys()):
             df_res = datafusion_results[df_key]
             duck_res = duckdb_results[duck_key]
-            
+
             times = round(df_res / duck_res, 4)
             if times > 1:
+                if worst_times < times:
+                    worst_times = times
                 times = f"{round(times, 2)}x slower"
             else:
+                if best_times > times:
+                    best_times = times
                 times = f"{round(1/times, 2)}x faster"
-            
+
             table.append([df_key, round(df_res, 2), round(duck_res, 2), times])
 
         tab = PrettyTable(table[0])
         tab.add_rows(table[1:])
         print(tab)
+
+        print(f"Best is {round(1/best_times, 2)}x faster")
+        print(f"Worst is {round(worst_times, 2)}x slower")
         print("\n")
