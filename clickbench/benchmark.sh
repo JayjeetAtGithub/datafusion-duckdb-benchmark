@@ -3,7 +3,8 @@ set -e
 
 # single = single parquet file (hits.parquet)
 # multi = multiple parquet files (100 files in hits_multi)
-mode="single"
+# Use the multi-file dataset
+mode="multi"
 
 # single = single core
 # multi = sweep multiple cores
