@@ -42,7 +42,7 @@ bash setup.sh
 bash benchmark.sh single
 
 # Plot the results, written to
-../results/latest/comparison.clickbench.pdf
+# ../results/latest/comparison.clickbench.pdf
 python3 plot.py comparison
 
 # Run and plot scalability benchmarks
