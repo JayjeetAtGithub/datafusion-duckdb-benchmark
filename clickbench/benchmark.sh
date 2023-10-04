@@ -10,6 +10,7 @@ mode="multi"
 # multi = sweep multiple cores
 sweep_cores="${1:-single}"
 
+mkdir -p ../results/latest
 rm -rf ../results/latest/clickbench_datafusion.csv
 rm -rf ../results/latest/clickbench_duckdb.csv
 
