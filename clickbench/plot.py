@@ -18,7 +18,7 @@ if __name__ == "__main__":
         ok_queries = set()
 
         for engine in engines:
-            with open(f'clickbench_{engine}.csv') as f:
+            with open(f'../results/latest/clickbench_{engine}.csv') as f:
                 lines = f.readlines()
 
             for line in lines:
@@ -60,9 +60,11 @@ if __name__ == "__main__":
             handles, labels = axes.flat[ax_idx].get_legend_handles_labels()
             axes.flat[ax_idx].get_legend().remove()
             ax_idx += 1
-        
+
         fig.legend(handles, labels, loc='upper center')
-        plt.savefig(f"{plot_type}.clickbench.pdf", bbox_inches='tight')
+        filename = f"../results/latest/{plot_type}.clickbench.pdf"
+        print("Writing to {}".format(filename))
+        plt.savefig(filename, bbox_inches='tight')
 
     elif plot_type == "comparison":
         plt.figure(figsize=(15,5))
@@ -76,7 +78,7 @@ if __name__ == "__main__":
         ok_queries = set()
 
         for engine in engines:
-            with open(f'clickbench_{engine}.csv') as f:
+            with open(f'../results/latest/clickbench_{engine}.csv') as f:
                     lines = f.readlines()
 
             for line in lines:
@@ -92,7 +94,7 @@ if __name__ == "__main__":
                             ok_queries.add(query_no)
                     except:
                         pass
-                    
+
                     if query_no in ok_queries:
                         data["duration"].append(duration)
                         data["engine"].append(engine)
@@ -105,4 +107,6 @@ if __name__ == "__main__":
 
         g = sns.barplot(x="query", y="duration", errorbar="sd", errwidth=0.1, capsize=0.2, hue="engine", data=df)
         g.set(xlabel="Query", ylabel="Duration (s)")
-        plt.savefig(f"{plot_type}.clickbench.pdf", bbox_inches='tight')
+        filename = f"../results/latest/{plot_type}.clickbench.pdf"
+        print("Writing to {}".format(filename))
+        plt.savefig(filename, bbox_inches='tight')

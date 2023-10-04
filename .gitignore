@@ -10,5 +10,4 @@ arrow-datafusion-python
 duckdb/
 h2o/*.csv
 tpch/*.csv
-clickbench/*.csv
 results/latest
