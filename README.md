@@ -20,7 +20,7 @@ python3 -m venv venv
 source venv/bin/activate
 pip install pyarrow pandas matplotlib seaborn
 
-# install duckdb
+# install DuckDB
 pip install duckdb==0.8.1 psutil
 
 # install DataFusion
