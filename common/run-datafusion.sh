@@ -20,9 +20,6 @@ QUERY_NUM=1
 
 echo "Using ${CREATE}, appending results to ${RESULT_FILE}"
 
-# installed as part of setup
-# pip install --upgrade datafusion==31.0.0
-
 cat ${QUERIES} | while read query; do
     sync
     echo 3 | sudo tee /proc/sys/vm/drop_caches >/dev/null

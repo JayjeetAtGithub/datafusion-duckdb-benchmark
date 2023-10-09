@@ -28,6 +28,12 @@ pip install --upgrade datafusion==31.0.0
 
 ```
 
+# Run all Benchmarks
+
+```
+bash benchmark-all.sh
+```
+
 ## ClickBench
 
 ```bash
@@ -145,6 +151,11 @@ index 5ca3eee..c4a0418 100644
 
 Build by following instructions at https://github.com/apache/arrow-datafusion-python to build and install datafusion-python
 
+Activate:
+```shell
+source venv/bin/activate
+```
+
 Ensure we have activated the correct venv
 
 ```shell
@@ -152,11 +163,17 @@ $ which python3
 /home/alamb/datafusion-duckdb-benchmark/venv/bin/python3
 ```
 
+Then build the wheel:
+
 ```
-source venv/bin/activate
-maturin develop --release
+maturin build --release --sdist --out dist --features protoc
 ```
 
+Which will result in building a wheel in `dist`:
+
+```
+📦 Built wheel for abi3 Python ≥ 3.8 to dist/datafusion-32.0.0rc0-cp38-abi3-manylinux_2_35_x86_64.whl
+```
 
 
 ### DuckDB
