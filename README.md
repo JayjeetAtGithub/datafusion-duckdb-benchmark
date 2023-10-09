@@ -147,10 +147,13 @@ Build by following instructions at https://github.com/apache/arrow-datafusion-py
 
 Ensure we have activated the correct venv
 
+```shell
 $ which python3
 /home/alamb/datafusion-duckdb-benchmark/venv/bin/python3
+```
 
 ```
+source venv/bin/activate
 maturin develop --release
 ```
 
