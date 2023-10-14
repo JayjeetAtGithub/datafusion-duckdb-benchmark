@@ -108,7 +108,7 @@ if __name__ == "__main__":
 
         # update the csv table
         for row in table[1:]:
-            csv_table.append(bench + ",".join([str(x) for x in row]))
+            csv_table.append(bench + "," + ",".join([str(x) for x in row]))
 
 
     output_filename = f"latest/overall.csv"
