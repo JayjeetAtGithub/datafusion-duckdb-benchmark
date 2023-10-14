@@ -33,7 +33,7 @@ if __name__ == "__main__":
     for bench in benches:
         table = list()
         if not os.path.exists(f"latest/{bench}_datafusion.csv"):
-            print("Did not fine data for {bench}, skipping")
+            print("Did not find data for {bench}, skipping")
             continue
 
         datafusion_results = read_file(f"latest/{bench}_datafusion.csv")
@@ -86,5 +86,7 @@ if __name__ == "__main__":
         latex_table.append("\\label{table:1}")
         latex_table.append("\\end{table}")
 
-        with open(f"{bench}.tex", "w") as f:
+        output_filename = f"latest/{bench}.tex"
+        with open(output_filename, "w") as f:
+            print("Writing tex based tables to {}".format(output_filename))
             f.write("\n".join(latex_table))
