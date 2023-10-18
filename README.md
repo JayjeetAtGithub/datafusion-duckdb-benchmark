@@ -148,7 +148,6 @@ index 5ca3eee..c4a0418 100644
  async-trait = "0.1"
  ```
 
-˘
 Build by following instructions at https://github.com/apache/arrow-datafusion-python to build and install datafusion-python
 
 Activate:
