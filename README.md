@@ -21,7 +21,7 @@ source venv/bin/activate
 pip install pyarrow pandas matplotlib seaborn prettytable
 
 # install DuckDB
-pip install duckdb==0.8.1 psutil
+pip install duckdb==0.9.0 psutil
 
 # install DataFusion
 pip install --upgrade datafusion==31.0.0
@@ -148,7 +148,7 @@ index 5ca3eee..c4a0418 100644
  async-trait = "0.1"
  ```
 
-
+˘
 Build by following instructions at https://github.com/apache/arrow-datafusion-python to build and install datafusion-python
 
 Activate:
