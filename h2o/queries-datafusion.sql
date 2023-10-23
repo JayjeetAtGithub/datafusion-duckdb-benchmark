@@ -8,8 +8,3 @@ select id3, max(v1)-min(v2) as range_v1_v2 from x_group group by id3;
 select id6, largest2_v3 from (select id6, v3 as largest2_v3, row_number() over (partition by id6 order by v3 desc) as order_v3 from x_group where v3 is not null) sub_query where order_v3 <= 2;
 select id2, id4, pow(corr(v1, v2), 2) as r2 from x_group group by id2, id4;
 select id1, id2, id3, id4, id5, id6, sum(v3) as v3, count(*) as count from x_group group by id1, id2, id3, id4, id5, id6;
-SELECT x.*, small.id4 AS small_id4, v2 FROM x JOIN small USING (id1);
-SELECT x.*, medium.id1 AS medium_id1, medium.id4 AS medium_id4, medium.id5 AS medium_id5, v2 FROM x JOIN medium USING (id2);
-SELECT x.*, medium.id1 AS medium_id1, medium.id4 AS medium_id4, medium.id5 AS medium_id5, v2 FROM x LEFT JOIN medium USING (id2);
-SELECT x.*, medium.id1 AS medium_id1, medium.id2 AS medium_id2, medium.id4 AS medium_id4, v2 FROM x JOIN medium USING (id5);
-SELECT x.*, big.id1 AS big_id1, big.id2 AS big_id2, big.id4 AS big_id4, big.id5 AS big_id5, big.id6 AS big_id6, v2 FROM x JOIN big USING (id3);
