@@ -11,8 +11,6 @@ if __name__ == "__main__":
     print(query)
 
     con = duckdb.connect(database="my-db.duckdb", read_only=False)
-    # enable parquet metadata cache
-    con.execute("PRAGMA enable_object_cache")
 
     # invoke like run-duckdb-query.py 1 << "txt of q1"
     query_num = sys.argv[1]
