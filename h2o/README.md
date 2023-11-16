@@ -1,4 +1,4 @@
-Scripts for running H20.ai Group benchmarks. See [Main Readme](../README.md) for usage
+Scripts for running H20.ai Group benchmarks. See [Main Readme](../README.md) for details
 
 ## H2O.ai
 
@@ -16,8 +16,7 @@ python3 plot.py
 ```
 
 
-Queries are run using the equivalent of:
-
+## Run a single query
 
 
 ### DataFusion
@@ -94,7 +93,10 @@ print("Done in: {}".format(end - start))
 
 ### Datfusion SQL
 
+```sql
 CREATE EXTERNAL TABLE h2o (id1  VARCHAR,id2  VARCHAR,id3  VARCHAR,id4  INT,id5  INT,id6  INT,v1  INT,v2 INT,v3 DOUBLE) STORED AS CSV WITH HEADER ROW LOCATION 'G1_1e7_1e2_5_0.csv';
 
 set datafusion.execution.target_partitions = 1;
+
 select id1, id2, id3, id4, id5, id6, sum(v3) as v3, count(*) as count from h2o group by id1, id2, id3, id4, id5, id6;
+```

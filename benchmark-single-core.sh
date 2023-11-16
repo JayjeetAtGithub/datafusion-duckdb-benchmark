@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# Measures single core performance of all three benchmarks
-
-
+# Runs single core performance of all three benchmarks
 
 echo "****** H2O ******"
 (cd h2o && bash benchmark.sh)

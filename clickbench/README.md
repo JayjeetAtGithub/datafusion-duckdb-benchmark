@@ -1,4 +1,4 @@
-Scripts for running ClickBench benchmarks. See [Main Readme](../README.md) for usage
+Scripts for running ClickBench benchmarks. See [Main Readme](../README.md) for details
 
 
 ## ClickBench
@@ -23,8 +23,7 @@ bash benchmark.sh multi multi
 python3 plot.py scalability
 ```
 
-
-Queries are run using the equivalent of:
+## Run a single query
 
 ### DataFusion
 
@@ -49,7 +48,9 @@ result = ctx.sql(create_query).collect()
 print("Running query...")
 
 # Run query
-query = """SELECT DATE_TRUNC('minute', to_timestamp_seconds("EventTime")) AS M, COUNT(*) AS PageViews FROM hits WHERE "CounterID" = 62 AND "EventDate"::INT::DATE >= '2013-07-14' AND "EventDate"::INT::DATE <= '2013-07-15' AND "IsRefresh" = 0 AND "DontCountHits" = 0 GROUP BY DATE_TRUNC('minute', to_timestamp_seconds("EventTime")) ORDER BY DATE_TRUNC('minute', M) LIMIT 10 OFFSET 1000;"""
+query = """
+SELECT DATE_TRUNC('minute', to_timestamp_seconds("EventTime")) AS M, COUNT(*) AS PageViews FROM hits WHERE "CounterID" = 62 AND "EventDate"::INT::DATE >= '2013-07-14' AND "EventDate"::INT::DATE <= '2013-07-15' AND "IsRefresh" = 0 AND "DontCountHits" = 0 GROUP BY DATE_TRUNC('minute', to_timestamp_seconds("EventTime")) ORDER BY DATE_TRUNC('minute', M) LIMIT 10 OFFSET 1000;
+"""
 
 start = timeit.default_timer()
 result = ctx.sql(query).collect()

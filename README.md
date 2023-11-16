@@ -2,15 +2,15 @@
 
 Compare DataFusion and DuckDB with
 * [ClickBench](https://benchmark.clickhouse.com) - scripts in [clickbench](clickbench)
-* [TPC-H](https://www.tpc.org/tpch/default5.asp) - scripts in [tpch]
-* [H2O.ai](https://h2oai.github.io/db-benchmark/) - scripts in [h2o]
+* [TPC-H](https://www.tpc.org/tpch/default5.asp) - scripts in [tpch](tpch)
+* [H2O.ai](https://h2oai.github.io/db-benchmark/) - scripts in [h2o](h2o)
 
 ## Versions
 * DataFusion 32.0.0
 * DuckDB 0.9.1
 
 ## Results
-All results are checked in to [results]
+All results are checked in to [results](results)
 
 The scripts in this repository run queries via python bindings for both DataFusion and DuckDB
 
@@ -31,11 +31,8 @@ pip install datafusion==32.0.0
 
 ```
 
-# Run all Benchmarks
 
-```
-bash benchmark-all.sh
-```
-
-
-**Credits**: https://github.com/alamb/datafusion-duckdb-benchmark
+**Credits**:
+* https://github.com/alamb/datafusion-duckdb-benchmark
+* https://github.com/ClickHouse/ClickBench/tree/main/duckdb
+* https://github.com/ClickHouse/ClickBench/tree/main/datafusion

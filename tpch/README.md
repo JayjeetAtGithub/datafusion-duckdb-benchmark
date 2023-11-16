@@ -1,4 +1,4 @@
-Scripts for running TPCH benchmarks. See [Main Readme](../README.md) for usage
+Scripts for running TPCH benchmarks. See [Main Readme](../README.md) for details
 
 
 ## TPC-H
@@ -17,8 +17,8 @@ bash benchmark.sh
 python3 plot.py
 ```
 
+## Run a single query
 
-Queries are run using the equivalent of:
 
 ### DataFusion
 ```python
@@ -114,7 +114,6 @@ print("Done in: {}".format(end - start))
 
 ### DataFusion SQL
 
-
 ```sql
 CREATE EXTERNAL TABLE customer STORED AS PARQUET LOCATION 'tpch_dataset/customer/part-0.parquet';
 CREATE EXTERNAL TABLE orders STORED AS PARQUET LOCATION 'tpch_dataset/orders/part-0.parquet';
@@ -124,7 +123,6 @@ CREATE EXTERNAL TABLE partsupp STORED AS PARQUET LOCATION 'tpch_dataset/partsupp
 CREATE EXTERNAL TABLE region STORED AS PARQUET LOCATION 'tpch_dataset/region/part-0.parquet';
 CREATE EXTERNAL TABLE supplier STORED AS PARQUET LOCATION 'tpch_dataset/supplier/part-0.parquet';
 CREATE EXTERNAL TABLE nation STORED AS PARQUET LOCATION 'tpch_dataset/nation/part-0.parquet';
-
 
 set datafusion.execution.target_partitions = 1;
 
