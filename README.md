@@ -1,7 +1,7 @@
 # DataFusion / DuckDB Benchmarking Scripts
 
 Compare DataFusion and DuckDB with
-* [ClickBench](https://benchmark.clickhouse.com) - scripts in [clickbench]
+* [ClickBench](https://benchmark.clickhouse.com) - scripts in [clickbench](clickbench)
 * [TPC-H](https://www.tpc.org/tpch/default5.asp) - scripts in [tpch]
 * [H2O.ai](https://h2oai.github.io/db-benchmark/) - scripts in [h2o]
 
