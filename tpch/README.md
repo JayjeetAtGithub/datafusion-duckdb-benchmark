@@ -1,5 +1,23 @@
 Scripts for running TPCH benchmarks. See [Main Readme](../README.md) for usage
 
+
+## TPC-H
+```bash
+cd tpch/
+
+# Download the dataset
+bash setup.sh
+
+# Run the benchmarks. Results will be written to
+#  ../results/latest/clickbench_datafusion.csv
+#  ../results/latest/clickbench_duckdb.csv
+bash benchmark.sh
+
+# Plot the results
+python3 plot.py
+```
+
+
 Queries are run using the equivalent of:
 
 ### DataFusion

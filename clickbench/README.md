@@ -1,5 +1,29 @@
 Scripts for running ClickBench benchmarks. See [Main Readme](../README.md) for usage
 
+
+## ClickBench
+
+```bash
+cd clickbench/
+
+# Download the dataset
+bash setup.sh
+
+# Run the benchmark,  results are written to
+#  ../results/latest/clickbench_datafusion.csv
+#  ../results/latest/clickbench_duckdb.csv
+bash benchmark.sh single
+
+# Plot the results, written to
+# ../results/latest/comparison.clickbench.pdf
+python3 plot.py comparison
+
+# Run and plot scalability benchmarks
+bash benchmark.sh multi multi
+python3 plot.py scalability
+```
+
+
 Queries are run using the equivalent of:
 
 ### DataFusion

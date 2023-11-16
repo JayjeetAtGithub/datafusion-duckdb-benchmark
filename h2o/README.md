@@ -1,6 +1,24 @@
 Scripts for running H20.ai Group benchmarks. See [Main Readme](../README.md) for usage
 
+## H2O.ai
+
+```bash
+cd h2o/
+
+# Download the dataset
+bash setup.sh
+
+# Run the benchmarks. Results will be written to h2o_datafusion.csv and h2o_duckdb.csv
+bash benchmark.sh
+
+# Plot the results. Currently supports only comparison charts
+python3 plot.py
+```
+
+
 Queries are run using the equivalent of:
+
+
 
 ### DataFusion
 
