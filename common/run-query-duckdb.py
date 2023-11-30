@@ -27,7 +27,7 @@ if __name__ == "__main__":
             # set number of cores
             con.execute("PRAGMA threads={}".format(c))
             start = timeit.default_timer()
-            result = con.execute(query).fetchall()
+            result = con.execute(query).fetch_arrow_table()
             end = timeit.default_timer()
             print(end-start)
 
