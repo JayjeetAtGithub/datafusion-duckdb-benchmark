@@ -48,13 +48,17 @@ if __name__ == "__main__":
                             "duration": duration,
                         })
 
+
         ax_idx = 0
         for k, v in data.items():
+            # show duckdb first (as blue) and datafusion as second (orange)
+            # for consistency
+            v.reverse()
             df = pd.DataFrame(v)
             g = sns.pointplot(ax=axes.flat[ax_idx], x="cores", errorbar="sd", y="duration", hue="engine", data=df)
             g.set(xlabel=None, ylabel=None)
             g.set_yscale("log")
-            axes.flat[ax_idx].set_title(f"Query {k}")
+            axes.flat[ax_idx].set_title(f"Q{k}")
             axes.flat[ax_idx].xaxis.grid(True)
             axes.flat[ax_idx].yaxis.grid(True)
             handles, labels = axes.flat[ax_idx].get_legend_handles_labels()
